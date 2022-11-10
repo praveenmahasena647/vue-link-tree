@@ -259,7 +259,7 @@ func getMail(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	var ID, _ = primitive.ObjectIDFromHex(userId)
-	var emailOnly *dbs.EmailIdOnly = &dbs.EmailIdOnly{}
+	var emailOnly *dbs.Emailidonly
 
 	var notFound = dbs.UserCollection.FindOne(context.TODO(), bson.M{"_id": ID}).Decode(&emailOnly)
 	if notFound != nil {

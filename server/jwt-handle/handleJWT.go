@@ -43,6 +43,18 @@ func DecodeJwt(r *http.Request) (string, error) {
 		}
 		strResult = claims["_id"].(string)
 	}
-
 	return strResult, err
+}
+
+func CreateAdminJWT(key string) (string, error) {
+
+	var token = jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+		"_id": key,
+		"exp": time.Now().Add(time.Hour * 24 * 15).Unix(),
+	})
+
+	// token Key is here just for test perpose
+	var tokenString, tokenErr = token.SignedString([]byte("yayayaa"))
+
+	return tokenString, tokenErr
 }

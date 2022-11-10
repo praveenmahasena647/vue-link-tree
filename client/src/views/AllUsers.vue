@@ -25,18 +25,18 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-<div class="allPeople" ref="selectBg">
-<div class="helper-layer">
-<div v-for="person in people" :key="person" class="person">
-<div class="forImg">
-<img :src="person.userImg" :alt="person.userName" />
-</div>
-<div class="text-content">
-<div v-text="person.userName"></div>
-<div>
-<router-link :to="person.userName"
->view more
-</router-link>
+    <div class="allPeople" ref="selectBg">
+        <div class="helper-layer">
+            <div v-for="person in people" :key="person" class="person">
+                <div class="forImg">
+                    <img :src="person.userImg" :alt="person.userName" />
+                </div>
+                <div class="text-content">
+                    <div v-text="person.userName"></div>
+                    <div>
+                        <router-link :to="person.userName"
+                            >view more
+                        </router-link>
                     </div>
                 </div>
             </div>

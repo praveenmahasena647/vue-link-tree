@@ -49,7 +49,13 @@ type NewLink struct {
 	Link      string `json:"link"`
 }
 
-type EmailIdOnly struct {
+type Emailidonly struct {
+	// there might be an error
 	Id      primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
-	EmailId string             `json:"userEmail"`
+	Emailid string             `json:"useremail"`
+}
+
+type AdminLogIn struct {
+	Key      string `json:"key"`
+	Password string `json:"password"`
 }

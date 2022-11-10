@@ -186,7 +186,7 @@ async function sendEmail() {
                 <div v-if="passed">password has not been changed</div>
             </form>
             <div>
-                your account activate
+Account deactivated
                 <input
                     type="checkbox"
                     @click="deactivate"
