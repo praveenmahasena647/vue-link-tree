@@ -1,0 +1,123 @@
+/* take care of font-size , font-width here */
+
+/*
+*** BREAK POINTS ***
+max-width: 25.7em mobile 
+max-width: 45em mini-tabs 
+max-width: 62em larg-tabs 
+max-width: 87em Desktop
+*/
+
+*,
+*::after,
+*::before {
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    font-size: 100%;
+
+    /* @media (min-width: 45em) { */
+    /*     color: red; */
+    /* } */
+    /* @media (min-width: 62em) { */
+    /*     color: blue; */
+    /* } */
+    /* @media (min-width: 87em) { */
+    /*     color: green; */
+    /* } */
+}
+
+html {
+    height: 100vh;
+    width: 100vw;
+
+    body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        #app {
+            height: 100vh;
+            width: 100vw;
+        }
+    }
+}
+.some-flowers {
+    height: auto;
+    width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-blend-mode: multiply;
+    background-image: url('../assets/some-flowers-desktop.jpg'); // this one is for Desktop
+    background-color: rgba($color: #000000, $alpha: 0.3);
+    background-attachment: fixed;
+    @media (max-width: 25.7em) {
+        background-image: url('../assets/some-flowers-mobile.jpg'); // this one is for moblie
+    }
+}
+.some-spars {
+    height: auto;
+    width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-blend-mode: multiply;
+    background-image: url('../assets/some-spark-desktop.jpg'); // this one is for Desktop
+    background-attachment: fixed;
+    background-color: rgba($color: #000000, $alpha: 0.3);
+    @media (max-width: 25.7em) {
+        background-image: url('../assets/some-flowers-mobile.jpg'); // this one is for moblie
+    }
+}
+
+.some-views {
+    height: auto;
+    width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-blend-mode: multiply;
+    background-image: url('../assets/views-desktop.jpg'); // this one is for Desktop
+    background-attachment: fixed;
+    background-color: rgba($color: #000000, $alpha: 0.3);
+    @media (max-width: 25.7em) {
+        background-image: url('../assets/views-mobile.jpg'); // this one is for moblie
+    }
+}
+
+.helper-layer {
+    border: 1px red solid;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.person {
+    min-height: 4rem;
+    border: solid 1px #f2f3f4;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 0.7rem;
+    border-radius: 10px;
+
+    &:hover {
+        background-color: rgba($color: #fffafa, $alpha: 0.3);
+    }
+
+    .forImg {
+        width: 23%;
+        border: 1px black solid;
+        display: flex;
+        img {
+            border-radius: 50%;
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+    .text-content {
+        padding: 0.5rem 0;
+        width: 50%;
+    }
+
+}
