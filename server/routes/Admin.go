@@ -13,7 +13,7 @@ import (
 )
 
 // this is gonna be fun i can already feel it
-// lets have JSML to gether
+// lets hate JSML together
 
 func adminLogin(w http.ResponseWriter, r *http.Request) {
 	var Admin *dbs.AdminLogIn = &dbs.AdminLogIn{}
@@ -33,7 +33,7 @@ func deactivateUser(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(500)
 		return
 	}
-	var _, notDone = dbs.UserCollection.UpdateOne(context.TODO(), bson.M{"": string(data)}, bson.M{"": false})
+	var _, notDone = dbs.UserCollection.UpdateOne(context.TODO(), bson.M{"username": string(data)}, bson.M{"$set": bson.M{"deactivate": false}})
 	if notDone != nil {
 		w.WriteHeader(500)
 		return
