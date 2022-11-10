@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import axios from 'axios'
 import { reactive } from 'vue'
 let deleteBool = reactive({
     deactivate: false,
@@ -7,34 +6,11 @@ let deleteBool = reactive({
     deleteUserName: '',
     deactivateUserName: '',
 })
-
-async function deleteUser() {
-    try {
-        let { data } = await axios.post(
-            'http://localhost:42069/Admin/deleteUser',
-            deleteBool.deleteUserName
-        )
-        console.log(data)
-    } catch (error) {
-        console.log(error)
-    }
-}
-async function deactivateUser() {
-    try {
-        let { data } = await axios.post(
-            'http://localhost:42069/Admin/deactivateUser',
-            deleteBool.deactivateUserName
-        )
-        console.log(data)
-    } catch (error) {
-        console.log(error)
-    }
-}
 </script>
 <template>
     <div>
         DeleteUser
-        <form @submit.prevent="deleteUser">
+        <form @submit.prevent='deleteUser'>
             <input
                 v-model="deleteBool.deleteUserName"
                 placeholder="deleteUser"
@@ -44,7 +20,7 @@ async function deactivateUser() {
     </div>
     <div>
         DeactivateEm
-        <form @submit.prevent="deactivateUser">
+        <form @submit.prevent='deactivateUser'>
             <input
                 v-model="deleteBool.deactivateUserName"
                 placeholder="deactivateEm"
