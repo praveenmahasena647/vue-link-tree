@@ -13,7 +13,7 @@ async function sendMail(value) {
     });
 
     let mailOptions = {
-        from: "praveenswift13@gmail.com",
+        from: "",
         to: value.userEmail,
         subject: "click to get verified",
         text: `http://localhost:42069/User/getVerified/${value._id}`,
