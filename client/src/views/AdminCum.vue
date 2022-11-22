@@ -1,35 +1,30 @@
 <script setup lang="ts">
 import axios from 'axios'
-import { reactive } from 'vue'
-let deleteBool = reactive({
-    deactivate: false,
-    deleteEm: false,
-    deleteUserName: '',
-    deactivateUserName: '',
-})
-
+import { ref } from 'vue'
+let deleteUserName = ref<string>('')
+let deactivateUserName = ref<string>('')
 async function deleteUser() {
     try {
         let { data } = await axios.post(
             'http://localhost:42069/Admin/deleteUser',
-            deleteBool.deleteUserName,
+            { username: deleteUserName.value },
             {
                 headers: {
                     'X-Admin': localStorage.getItem('adminCum'),
                 },
             }
         )
-
         console.log(data)
     } catch (error) {
         console.log(error)
     }
 }
+
 async function deactivateUser() {
     try {
         let { data } = await axios.post(
             'http://localhost:42069/Admin/deactivateUser',
-            deleteBool.deactivateUserName,
+            { username: deactivateUserName.value },
             {
                 headers: {
                     'X-Admin': localStorage.getItem('adminCum'),
@@ -46,20 +41,14 @@ async function deactivateUser() {
     <div>
         DeleteUser
         <form @submit.prevent="deleteUser">
-            <input
-                v-model="deleteBool.deleteUserName"
-                placeholder="deleteUser"
-            />
+            <input v-model="deleteUserName" placeholder="deleteUser" />
             <button>deleteEm</button>
         </form>
     </div>
     <div>
         DeactivateEm
         <form @submit.prevent="deactivateUser">
-            <input
-                v-model="deleteBool.deactivateUserName"
-                placeholder="deactivateEm"
-            />
+            <input v-model="deactivateUserName" placeholder="deactivateEm" />
 
             <button>deactivateEm</button>
         </form>

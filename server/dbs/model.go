@@ -60,3 +60,7 @@ type AdminLogIn struct {
 	Key      string             `json:"key"`
 	Password string             `json:"password"`
 }
+
+type AdminChange struct {
+	UserName string `json:"username"`
+}

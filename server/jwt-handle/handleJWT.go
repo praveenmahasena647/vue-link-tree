@@ -57,3 +57,24 @@ func CreateAdminJWT(key string) (string, error) {
 
 	return tokenString, tokenErr
 }
+
+func DecodeAdminJWT(JwtString string) (string, error) {
+	if JwtString == "" {
+		return "", errors.New("no Token string")
+	}
+
+	var token, err = jwt.Parse(JwtString, func(token *jwt.Token) (interface{}, error) {
+		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+			return "", errors.New("its a Eoorror")
+		}
+		// token Key is here just for test perpose
+		return []byte("yayayaa"), nil
+	})
+	//
+	var strResult string
+	if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
+		strResult = claims["_id"].(string)
+	}
+	return strResult, err
+
+}
