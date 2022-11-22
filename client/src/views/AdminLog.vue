@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import router from '@/router';
+import router from '@/router'
 import axios from 'axios'
 import { reactive } from 'vue'
 let cred = reactive({
@@ -9,8 +9,8 @@ let cred = reactive({
 async function LoggedIn() {
     try {
         let { data } = await axios.post('http://localhost:42069/Admin/', cred)
-        localStorage.setItem('AdminMhm',data)
-        router.push({'path':'/cuminMouth'})
+        localStorage.setItem('adminCum', data)
+        router.push({ path: '/cuminMouth' })
     } catch (error) {
         console.log(error)
     }

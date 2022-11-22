@@ -19,6 +19,24 @@ function isLoggedIn(to, from, next) {
     next()
 }
 
+//@ts-ignore
+function adminLoggedIn(to, form, next) {
+    if (localStorage.getItem('adminCum')) {
+        next('/cuminMouth')
+        return
+    }
+    next()
+}
+
+//@ts-ignore
+function adminIsLogged(to, form, next) {
+    if (localStorage.getItem('adminCum')) {
+        next()
+        return
+    }
+    next('/cum')
+}
+
 // @ts-ignore
 const routes = [
     {
@@ -55,15 +73,17 @@ const routes = [
         component: () => import('../views/DashBoard.vue'),
     },
     {
-        path:'/cum',
+        path: '/cum',
+        beforeEnter: adminLoggedIn,
         //@ts-ignore
-        component:()=>import('../views/AdminLog.vue')
+        component: () => import('../views/AdminLog.vue'),
     },
     {
-        path:'/cuminMouth',
+        path: '/cuminMouth',
+        beforeEnter: adminIsLogged,
         //@ts-ignore
-        component:()=>import('../views/AdminCum.vue')
-    }
+        component: () => import('../views/AdminCum.vue'),
+    },
 ]
 
 const router = createRouter({

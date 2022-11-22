@@ -56,6 +56,7 @@ type Emailidonly struct {
 }
 
 type AdminLogIn struct {
-	Key      string `json:"key"`
-	Password string `json:"password"`
+	Id       primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
+	Key      string             `json:"key"`
+	Password string             `json:"password"`
 }

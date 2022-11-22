@@ -50,7 +50,6 @@ func CreateAdminJWT(key string) (string, error) {
 
 	var token = jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"_id": key,
-		"exp": time.Now().Add(time.Hour * 24 * 15).Unix(),
 	})
 
 	// token Key is here just for test perpose

@@ -10,7 +10,7 @@ import (
 )
 
 var handleCors = handlers.CORS(
-	handlers.AllowedHeaders([]string{"Content-Type", "X-UserName", "X-UserEmail", "X-Jwt", "X-links"}),
+	handlers.AllowedHeaders([]string{"Content-Type", "X-UserName", "X-UserEmail", "X-Jwt", "X-links", "X-Admin"}),
 	handlers.AllowedMethods([]string{"GET", "PUT", "POST", "DELETE"}),
 	handlers.AllowedOrigins([]string{"http://localhost:5173"}),
 )
@@ -21,6 +21,7 @@ func main() {
 		log.Panic(err)
 		return
 	}
+	log.Println()
 	var router = routes.RunServer()
 	http.ListenAndServe(":42069", handleCors(router))
 }

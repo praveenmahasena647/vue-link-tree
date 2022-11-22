@@ -12,8 +12,14 @@ async function deleteUser() {
     try {
         let { data } = await axios.post(
             'http://localhost:42069/Admin/deleteUser',
-            deleteBool.deleteUserName
+            deleteBool.deleteUserName,
+            {
+                headers: {
+                    'X-Admin': localStorage.getItem('adminCum'),
+                },
+            }
         )
+
         console.log(data)
     } catch (error) {
         console.log(error)
@@ -23,7 +29,12 @@ async function deactivateUser() {
     try {
         let { data } = await axios.post(
             'http://localhost:42069/Admin/deactivateUser',
-            deleteBool.deactivateUserName
+            deleteBool.deactivateUserName,
+            {
+                headers: {
+                    'X-Admin': localStorage.getItem('adminCum'),
+                },
+            }
         )
         console.log(data)
     } catch (error) {
